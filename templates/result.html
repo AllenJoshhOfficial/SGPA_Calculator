@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA Calculator - Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your SGPA - Result </h1>
+
+    {% if sgpa > 6 %}
+        <script src="{{ url_for('static', filename='confetti.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                confetti({
+                    particleCount: 150,
+                    spread: 180,
+                    origin: { x: 0.5, y: 0.7 },
+                });
+            });
+        </script>
+    {% endif %}
+
+    <h2>SGPA: {{ sgpa }}</h2>
+</body>
+</html>

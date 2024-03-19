@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA SEMESTER III CALCULATOR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>SGPA SEMESTER III CALCULATOR [2019 Regulations]</h1>
+
+    <form action="/calculate_sgpa" method="post">
+        {% for subject in subjects %}
+            <div class="grade-selector">
+                <label for="{{ subject }}">{{ subject }} Grade:</label>
+                <select name="{{ subject }}" id="{{ subject }}">
+                    {% for option in grade_options %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endfor %}
+
+        <input type="submit" value="Calculate SGPA">
+    </form>
+
+    <div id="result-container" style="display: none;">
+        <h2>SGPA Result:</h2>
+        <p id="sgpa-result"></p>
+    </div>
+
+    <div id="confetti-container"></div>
+</body>
+<!--Developed by 
+    Bhavithraa R S from AI DS Dept
+    Gokul K Kfrom AI DS Dept
+    Joshua Allen from AI DS Dept-->
+</html>
